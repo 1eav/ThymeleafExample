@@ -1,0 +1,42 @@
+<!-- contacts.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact List</title>
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet"/>
+</head>
+<body>
+
+<h2 class="text">Contact List</h2>
+
+<table border="1">
+    <tr>
+        <th class="text">ID</th>
+        <th class="text">First Name</th>
+        <th class="text">Last Name</th>
+        <th class="text">Email</th>
+        <th class="text">Phone</th>
+        <th class="text">Edit</th>
+        <th class="text">Delete</th>
+    </tr>
+    <tr th:each="contact : ${contacts}">
+        <td class="text" th:text="${contact.id}"></td>
+        <td class="text" th:text="${contact.firstName}"></td>
+        <td class="text" th:text="${contact.lastName}"></td>
+        <td class="text" th:text="${contact.email}"></td>
+        <td class="text" th:text="${contact.phone}"></td>
+        <!-- Ссылки для редактирования и удаления контакта -->
+        <!-- Замени {id} на параметр id -->
+        <td><a th:href="@{/contacts/edit/{id}(id=${contact.id})}">Edit</a></td>
+        <td><a th:href="@{/contacts/delete/{id}(id=${contact.id})}">Delete</a></td>
+    </tr>
+</table>
+
+<br>
+<a class="text" href="/contacts/create">Create New Contact</a>
+
+</body>
+</html>
